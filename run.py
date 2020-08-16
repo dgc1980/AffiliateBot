@@ -10,8 +10,6 @@ import datetime
 
 import Config
 
-apppath='/home/reddit/affiliatebot/'
-
 reddit = praw.Reddit(client_id=Config.cid,
                      client_secret=Config.secret,
                      password=Config.password,
@@ -22,7 +20,7 @@ subreddit = reddit.subreddit(Config.subreddit)
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s %(name)-12s %(levelname)-8s %(message)s',
                     datefmt='%m-%d %H:%M',
-                    filename=apppath+'report.log',
+                    filename=Config.apppath+'report.log',
                     filemode='a')
 
 console = logging.StreamHandler()
@@ -32,18 +30,18 @@ console.setFormatter(formatter)
 logging.getLogger('').addHandler(console)
 os.environ['TZ'] = 'America/Los_Angeles'
 
-f = open(apppath+"submissionids.txt","a+")
+f = open(Config.apppath+"submissionids.txt","a+")
 f.close()
-f = open(apppath+"commentids.txt","a+")
+f = open(Config.apppath+"commentids.txt","a+")
 f.close()
 
 def submissionID(postid):
-    f = open(apppath+"submissionids.txt","a+")
+    f = open(Config.apppath+"submissionids.txt","a+")
     f.write(postid + "\n")
     f.close()
 
 def commentID(postid):
-    f = open(apppath+"commentids.txt","a+")
+    f = open(Config.apppath+"commentids.txt","a+")
     f.write(postid + "\n")
     f.close()
 
