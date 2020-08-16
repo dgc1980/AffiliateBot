@@ -21,7 +21,6 @@ AffiliateData = [
     'amzn\.to',
     'battle\.net/recruit/',
     'crusaderkings.com/?ref',
-    'depot.xda-developers.com',
     'chrono\.gg/\w+',
     '\b(?!www\.)(\w+(?:-\w+)*\.)chrono\.gg',
     '2game\.com/(.*)[?&]ref=',
