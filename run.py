@@ -7,7 +7,6 @@ import re
 import os
 import datetime
 
-
 import Config
 
 reddit = praw.Reddit(client_id=Config.cid,
