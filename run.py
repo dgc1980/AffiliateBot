@@ -53,7 +53,7 @@ def check_url( url ):
         match1 = re.search("(?:https?:\/\/)?(?:www\.)?([\w\-\.]+)\/", url)
         forceload = False
         for greylist in Config.Greylist:
-            if greylist in url.lower:
+            if greylist in url.lower():
                 forceload = True
         if match1.group(1) not in Config.Whitelist or forceload:
             logging.info("checking url " + url)
@@ -133,9 +133,6 @@ def check_post(submission):
 
 posts = subreddit.stream.submissions(pause_after=-1)
 cmts = subreddit.stream.comments(pause_after=-1)
-
-check_post( reddit.submission("i9m5g2") )
-exit()
 
 while True:
     for post in posts:
