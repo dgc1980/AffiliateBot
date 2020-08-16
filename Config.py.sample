@@ -5,7 +5,7 @@ password = ''
 subreddit = ''
 
 
-agent = 'python:(name):(version) (by (author))'
+agent = 'python:(AffiliateBot):(0.1) (by (dgc1980))'
 
 AffiliateData = [
     # Generic
