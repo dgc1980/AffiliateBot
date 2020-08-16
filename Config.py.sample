@@ -6,7 +6,7 @@ user = ''
 password = ''
 subreddit = ''
 
-apppath = os.path.dirname(os.path.realpath(__file__))
+apppath = os.path.dirname(os.path.realpath(__file__)) + "/"
 
 agent = 'python:(AffiliateBot):(0.1) (by (dgc1980))'
 
