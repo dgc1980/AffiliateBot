@@ -90,7 +90,7 @@ def check_comment(comment):
     for url in unique_urls:
         urlcheck = check_url( url )
         if urlcheck:
-            comment.report( urlcheck )
+            comment.report( "Affiliate Bot: " + urlcheck )
             return
 
 
@@ -111,7 +111,7 @@ def check_post(submission):
         for url in unique_urls:
             urlcheck = check_url( url )
             if urlcheck:
-                submission.report( urlcheck )
+                submission.report( "Affiliate Bot: " + urlcheck )
                 return
 
     if not submission.is_self:
