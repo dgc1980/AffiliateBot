@@ -79,6 +79,10 @@ AffiliateData = [
     'voidu\.com/(.*)[?&](voider|utm_medium=affiliate)'
 ]
 
+Greylist = [
+'gog.com/forum'
+]
+
 Whitelist = [
 'gog.com',
 'gogobundle.com',

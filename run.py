@@ -51,7 +51,11 @@ def commentID(postid):
 def check_url( url ):
     if re.search("(?:https?:\/\/)?(?:www\.)?([\w\-\.]+)\/", url) is not None:
         match1 = re.search("(?:https?:\/\/)?(?:www\.)?([\w\-\.]+)\/", url)
-        if match1.group(1) not in Config.Whitelist:
+        forceload = False
+        for greylist in Config.Greylist:
+            if greylist in url.lower:
+                forceload = True
+        if match1.group(1) not in Config.Whitelist or forceload:
             logging.info("checking url " + url)
             try:
                 r = requests.get(url)
