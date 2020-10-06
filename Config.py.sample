@@ -6,6 +6,9 @@ user = ''
 password = ''
 subreddit = ''
 
+CheckAnchors = True
+AnchorMatch = 'DomainOnly'
+
 apppath = os.path.dirname(os.path.realpath(__file__)) + "/"
 
 agent = 'python:(AffiliateBot):(0.1) (by (dgc1980))'

@@ -6,6 +6,8 @@ import logging
 import re
 import os
 import datetime
+import gc
+
 
 import Config
 
@@ -34,6 +36,17 @@ f.close()
 f = open(Config.apppath+"commentids.txt","a+")
 f.close()
 
+
+def checkanchors( comment ):
+  anchors = re.findall('\[(\S+)\]\((\S+)\)', comment)
+  for anchor in anchors:
+    if Config.AnchorMatch == 'DomainOnly':
+      if any(s in anchor[0] for s in ['.co','.com','.net']):
+        if getdomain( anchor[0] ):
+          if getdomain(anchor[0]) != getdomain(anchor[1]):
+            return True
+
+
 def submissionID(postid):
     f = open(Config.apppath+"submissionids.txt","a+")
     f.write(postid + "\n")
@@ -44,18 +57,34 @@ def commentID(postid):
     f.write(postid + "\n")
     f.close()
 
+def getdomain( url ):
+    match1 = re.search("(?:https?:\/\/)?(?:www\.)?([\w\-\.]+)", url)
+    if match1:
+      return match1.group(1)
+    return None
 
 def check_url( url ):
     if re.search("(?:https?:\/\/)?(?:www\.)?([\w\-\.]+)\/", url) is not None:
-        match1 = re.search("(?:https?:\/\/)?(?:www\.)?([\w\-\.]+)\/", url)
         forceload = False
         for greylist in Config.Greylist:
             if greylist in url.lower():
                 forceload = True
-        if match1.group(1) not in Config.Whitelist or forceload:
+        if getdomain(url) not in Config.Whitelist or forceload:
             logging.info("checking url " + url)
             try:
                 r = requests.get(url)
+                if r.history:
+                    for reqs in r.history:
+                        print("redirects  " + reqs.url)
+                        for affdata in Config.AffiliateData:
+                            if re.search(affdata, reqs.url.lower() ) is not None:
+                                return( "Found Generic Affiliate Information In Redirect" )
+                    print("redirects  " + r.url)
+                    for affdata in Config.AffiliateData:
+                        if re.search(affdata, r.url.lower() ) is not None:
+                            return( "Found Generic Affiliate Information In Redirect" )
+
+
                 if re.search("amzn.to|amazon\.co.*tag=|amazon\.com\/.*asin", r.text.lower()) is not None:
                     return( "Amazon Affailiates Found" )
                 if re.search("(amzn_assoc_tracking_id|amazon-adsystem.com)", r.text.lower()) is not None:
@@ -63,7 +92,7 @@ def check_url( url ):
                 if re.search("shopify.com|wix.com", r.text.lower()) is not None:
                     return( "Wix/Shopify Found check if legit store" )
                 for affdata in Config.AffiliateData:
-                    if re.search(affdata, r.text.lower() ) is not None:
+                    if re.search(affdata, r.text ) is not None:
                         return( "Found Generic Affiliate Information" )
                 return
             except:
@@ -84,6 +113,12 @@ def check_comment(comment):
             continue
         else:
             unique_urls.append(url)
+
+    if Config.CheckAnchors:
+        if checkanchors( comment.body ):
+            comment.report( "Affiliate Bot: " + "Found Mismatched Anchor/Link" )
+            return
+
     for url in unique_urls:
         urlcheck = check_url( url )
         if urlcheck:
@@ -122,12 +157,6 @@ def check_post(submission):
 
 
 
-
-
-
-
-
-
 posts = subreddit.stream.submissions(pause_after=-1)
 cmts = subreddit.stream.comments(pause_after=-1)
 
@@ -135,9 +164,11 @@ while True:
     for post in posts:
         if post is None:
             break
+        print( "checking post")
         check_post(post)
     for cmt in cmts:
         if cmt is None:
             break
+        print( "checking comment")
         check_comment(cmt)
 
