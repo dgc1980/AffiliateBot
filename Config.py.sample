@@ -6,7 +6,7 @@ user = ''
 password = ''
 subreddit = ''
 
-CheckAnchors = True
+CheckAnchors = False  # True or False,    True = [google.com](https://google.com) is match ok, [google.com](https://notgoogle.com) is mismatched url
 AnchorMatch = 'DomainOnly'
 
 apppath = os.path.dirname(os.path.realpath(__file__)) + "/"
@@ -51,7 +51,7 @@ AffiliateData = [
     'gamefly\.com/(.*)[?&]adtrackingid=',
     'gamersgate\.(com|co\.uk)/(.*)[?&]caff=',
     'gamesplanet\.(.*)[?&](affiliate|ref)=',
-    '(.*)\.gamesrepublic\.com',
+    '(\S+)\.gamesrepublic\.com',
     'gamesrepublic\.com/go/(.*)',
     'gamesrepublic\.com/.*,(true|false),\d+\.html',
     'gamestop\.com/(.*)[?&](utm_source=linkshare|utm_medium=affiliate|utm_campaign=deeplink|sourceID=|cid=afl_|affID=)',

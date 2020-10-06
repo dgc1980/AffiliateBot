@@ -41,7 +41,7 @@ def checkanchors( comment ):
   anchors = re.findall('\[(\S+)\]\((\S+)\)', comment)
   for anchor in anchors:
     if Config.AnchorMatch == 'DomainOnly':
-      if any(s in anchor[0] for s in ['.co','.com','.net']):
+      if any(s in anchor[0] for s in ['.co','.com','.net', '.io', '.org', '.gg']):
         if getdomain( anchor[0] ):
           if getdomain(anchor[0]) != getdomain(anchor[1]):
             return True

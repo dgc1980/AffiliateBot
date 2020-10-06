@@ -11,3 +11,11 @@ this is useful for subs that are popular with spamming to help your moderators d
 please note, that if the bot reports a post, it is still best if you check the comment/affected url just to make sure.
 
 if you need any help with the bot, or setting up hosting for it, you are welcome to contact me directly.
+
+
+### updates:
+#### 07/10/2020
+```
+Added scanning of url redirects to match affiliate matches before scanning content
+Added option for scanning link anchors for mismatched links e.g. [https://amazon.com/dp/item](https://linktospamsite.com) see Config.py
+```
