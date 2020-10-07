@@ -1,0 +1,7 @@
+Updates to python bot.
+
+
+07/10/2020
+----------
+Added scanning of url redirects to match affiliate matches before scanning content
+Added option for scanning link anchors for mismatched links e.g. [https://amazon.com/dp/item](https://linktospamsite.com) see Config.py

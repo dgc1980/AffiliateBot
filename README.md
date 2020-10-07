@@ -1,21 +1,12 @@
 # AffiliateBot
 
-This bot is used for subreddits,
+This bot functions as a scanner for Affiliate base content within submissions and comments.
 
-the function is as follows,
+It is based on the bot we use at https://www.reddit.com/r/GameDeals for reporting spam and other content, while it is not the exact same bot, I will keep this updated with most of the features we use.
 
-when a submission or a comment is posted, it will extract the urls, check them against a whitelist, if the url is not with the whitelist, it will attempt to load the contents of the url and parse it for different types of affiliate links and report the submission or comment if one is detected,
+The bot does not require any form of subreddit moderator permissions and will report submissions and comments in the following format `Bot Report: REASON`.
 
-this is useful for subs that are popular with spamming to help your moderators do what they do best and ban the spammer.
+When a Submission or a Comment is submitted within the chosen subreddit, the bot will extract all the URL's check the URL and also check the content of the linked sites to check for Affiliate based information and Report the Submission or Comment based on it's findings, it is not always 100% correct and still requires manual interaction before you make you choice to remove or approve.
 
-please note, that if the bot reports a post, it is still best if you check the comment/affected url just to make sure.
+If you need any help to configure, or hosting the bot you are welcome to context me directly on [reddit](https://www.reddit.com/user/dgc1980/).
 
-if you need any help with the bot, or setting up hosting for it, you are welcome to contact me directly.
-
-
-### updates:
-#### 07/10/2020
-```
-Added scanning of url redirects to match affiliate matches before scanning content
-Added option for scanning link anchors for mismatched links e.g. [https://amazon.com/dp/item](https://linktospamsite.com) see Config.py
-```
