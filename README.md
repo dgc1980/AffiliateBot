@@ -1,3 +1,7 @@
+please see the updated version running in Docker
+
+https://github.com/dgc1980/AffiliateBot2.0
+
 # AffiliateBot
 
 This bot functions as a scanner for Affiliate base content within submissions and comments.
