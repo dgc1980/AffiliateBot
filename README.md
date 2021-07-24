@@ -10,3 +10,14 @@ When a Submission or a Comment is submitted within the chosen subreddit, the bot
 
 If you need any help to configure, or hosting the bot you are welcome to contact me directly on [reddit](https://www.reddit.com/user/dgc1980/).
 
+# Options for hosting
+
+[https://hosting.gullo.me/pricing](Gullo's Hosting) - Cheap OpenVZ NAT Based VPS using a Shared IPv4 between other members recommended 512MB server but will worth with 256MB (upgrading to Docker for newer versions of bot 512MB required)
+
+* use coupon `LEB-NAT-256MB` or `LEB-NAT-512MB` depending on your choice to take about 40% off the price
+
+[https://my.boomer.host/order.php?step=1&productGroup=4&product=7](Boomer.host] - Cheap OpenVZ Based VPS with its own IPv4 - USD4.99 per year. fairly new host not many reviews I have started using one for testing
+
+[https://virmach.com/special-offers/](VirMach) Cheap KVM Based VPS with cheap prices and dedicated IPv4 - I currently use a 1GB system here for my production bots and are highly recommended
+
+^(I have no affiliate links in the above links and not getting paid to promote any of the above providers and they are just my personal recommendations, you are free to use anyone you wish)
