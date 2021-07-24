@@ -18,7 +18,7 @@ If you need any help to configure, or hosting the bot you are welcome to contact
 
 * use coupon `LEB-NAT-256MB` or `LEB-NAT-512MB` depending on your choice to take about 40% off the price
 
-[Boomer.hos](h)ttps://my.boomer.host/order.php?step=1&productGroup=4&product=7) - Cheap OpenVZ Based VPS with its own IPv4 - USD4.99 per year. fairly new host not many reviews I have started using one for testing
+[Boomer.hos](https://my.boomer.host/order.php?step=1&productGroup=4&product=7) - Cheap OpenVZ Based VPS with its own IPv4 - USD4.99 per year. fairly new host not many reviews I have started using one for testing
 
 [VirMach](https://virmach.com/special-offers/) Cheap KVM Based VPS with cheap prices and dedicated IPv4 - I currently use a 1GB system here for my production bots and are highly recommended
 
